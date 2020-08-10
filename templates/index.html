@@ -1,0 +1,14 @@
+{% load static %}
+
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<p>Hello, Alena!</p>
+{% for color in colors %}
+    <div class="block" style="background-color:{{ color.color }}"></div>
+{% endfor %}
+</body>
+</html>
+
