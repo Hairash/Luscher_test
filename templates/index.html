@@ -3,12 +3,19 @@
 <html>
 <head>
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'script.js' %}"></script>
 </head>
 <body>
-<p>Hello, Alena!</p>
-{% for color in colors %}
-    <div class="block" style="background-color:{{ color.color }}"></div>
+<h3>Какой из этих цветов вам кажется наиболее симпатичным?</h3>
+{% for color_set in colors %}
+    <div class="color_set{% if forloop.counter > 1 %} hide{% endif %}" num="{{ forloop.counter }}">
+    {% for color in color_set %}
+        <div class="block" style="background-color:{{ color.color }}" num={{ color.num }}></div>
+    {% endfor %}
+    </div>
 {% endfor %}
+<textarea id="result" readonly class="hide"></textarea>
 </body>
 </html>
 
