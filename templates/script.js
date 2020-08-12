@@ -28,3 +28,5 @@ function change() {
 function end() {
     $('#result').removeClass('hide');
 }
+
+//TODO: Site may lay down. So... We need to think about it.

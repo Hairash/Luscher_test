@@ -1,41 +1,36 @@
 from django.shortcuts import render
 
+# 1 — темно - синий цвет;
+# 2 — сине - зеленый;
+# 3 — оранжево - красный;
+# 4 — желтый;
+# 5 — фиолетовый;
+# 6 — коричневый;
+# 7 — черный;
+# 0 — серый цвет.
+COLORS_MAP = {
+    1: 'rgb(25, 0, 142)',
+    2: 'rgb(0, 102, 0)',
+    3: 'rgb(216, 0, 0)',
+    4: 'rgb(190, 147, 0)',
+    5: 'rgb(181, 0, 119)',
+    6: 'rgb(103, 36, 1)',
+    7: 'rgb(8, 8, 8)',
+    0: 'rgb(112, 112, 112)',
+}
+
 
 def index(request):
-    # 1 — темно - синий
-    # цвет;
-    # 2 — сине - зеленый;
-    # 3 — оранжево - красный;
-    # 4 — желтый;
-    # 5 — фиолетовый;
-    # 6 — коричневый;
-    # 7 — черный;
-    # 0 — серый
-    # цвет.
-    #
-    # Пример:
+    # Output example:
     # 07612453
     # 67543120
+
+    # You can shuffle colors here
+    color_packs = [
+        [1, 2, 3, 4, 5, 6, 7, 0],
+        [2, 6, 4, 0, 7, 5, 3, 1],
+    ]
+    colors = [
+        [{'num': i, 'color': COLORS_MAP[i]} for i in color_pack] for color_pack in color_packs
+    ]
     return render(request, 'index.html', {'colors': colors})
-colors = [
-    [
-        {'num': 1, 'color': '#1d36b4'},
-        {'num': 2, 'color': '#339e8a'},
-        {'num': 3, 'color': '#b06121'},
-        {'num': 4, 'color': '#ffef42'},
-        {'num': 5, 'color': '#7857ff'},
-        {'num': 6, 'color': '#ba5921'},
-        {'num': 7, 'color': '#000000'},
-        {'num': 0, 'color': '#8a8a8a'},
-    ],
-    [
-        {'num': 2, 'color': '#339e8a'},
-        {'num': 6, 'color': '#ba5921'},
-        {'num': 4, 'color': '#ffef42'},
-        {'num': 0, 'color': '#8a8a8a'},
-        {'num': 7, 'color': '#000000'},
-        {'num': 5, 'color': '#7857ff'},
-        {'num': 3, 'color': '#b06121'},
-        {'num': 1, 'color': '#1d36b4'},
-    ],
-]
